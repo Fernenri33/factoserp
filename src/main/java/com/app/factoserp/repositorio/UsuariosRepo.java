@@ -7,5 +7,7 @@ import com.app.factoserp.modelos.Usuarios;
 
 @Repository
 public interface UsuariosRepo extends JpaRepository<Usuarios,Integer> {
+
+    Usuarios findByEmailAndPassword(String email, String password);
     
 }

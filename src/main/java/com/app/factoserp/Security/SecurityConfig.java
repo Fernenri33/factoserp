@@ -15,6 +15,8 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/").permitAll()
                 .requestMatchers("/login").permitAll()
+                .requestMatchers("/ventas").permitAll()
+                .requestMatchers("/ventas/editar/*").permitAll()
                 .anyRequest().authenticated()
             );
         return http.build();
