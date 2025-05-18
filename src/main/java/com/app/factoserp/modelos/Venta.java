@@ -57,7 +57,6 @@ public class Venta {
         this.ventaDetalle = envioDetalle;
     }
 
-
     public int getId() {
         return this.id;
     }

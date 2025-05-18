@@ -29,7 +29,6 @@ public class CompraDetalle {
     @Column(name = "cantidad", nullable = false)
     private int cantidad; // Cantidad del producto en el envío
     
-
     public CompraDetalle() {
     }
 
@@ -39,7 +38,6 @@ public class CompraDetalle {
         this.producto = producto;
         this.cantidad = cantidad;
     }
-
 
     public int getId() {
         return this.id;
