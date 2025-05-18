@@ -2,9 +2,9 @@ package com.app.factoserp.modelos.Enum;
 
 public enum Rol {
     
-    Admin("Admin"), // Acceso a todo y a generar usuarios
-    Vendedor("Vendedor"), // Acceso a ventas, pero no a compras
-    Comprador("Comprador"); // Acceso a compras, pero no a ventas
+    ADMIN("ADMIN"), // Acceso a todo y a generar usuarios
+    VENDEDOR("VENDEDOR"), // Acceso a ventas, pero no a compras
+    COMPRADOR("COMPRADOR"); // Acceso a compras, pero no a ventas
 
     private final String displayName;
 

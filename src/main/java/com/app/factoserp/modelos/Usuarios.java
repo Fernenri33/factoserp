@@ -40,7 +40,7 @@ public class Usuarios {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "rol", nullable = false)
-    private Rol estado;
+    private Rol rol;
 
     public Usuarios() {
     }
@@ -54,7 +54,7 @@ public class Usuarios {
         this.email = email;
         this.direccion = direccion;
         this.password = password;
-        this.estado = estado;
+        this.rol = estado;
     }
 
     public int getId() {
@@ -113,12 +113,12 @@ public class Usuarios {
         this.password = password;
     }
 
-    public Rol getEstado() {
-        return this.estado;
+    public Rol getRol() {
+        return this.rol;
     }
 
-    public void setEstado(Rol estado) {
-        this.estado = estado;
+    public void setEstado(Rol rol) {
+        this.rol = rol;
     }
 
 }

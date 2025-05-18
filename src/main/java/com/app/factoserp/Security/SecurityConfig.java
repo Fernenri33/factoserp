@@ -9,16 +9,19 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-            .csrf(csrf -> csrf.disable()) // Updated way to disable CSRF
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/").permitAll()
-                .requestMatchers("/login").permitAll()
-                .requestMatchers("/ventas").permitAll()
-                .requestMatchers("/ventas/editar/*").permitAll()
-                .anyRequest().authenticated()
-            );
-        return http.build();
-    }
+public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    http
+        .csrf(csrf -> csrf.disable())
+        .authorizeHttpRequests(auth -> auth
+            .anyRequest().permitAll()  // <--- Permitir todas las URLs
+        )
+        .formLogin(form -> form
+            .loginPage("/login")
+            .permitAll()
+        )
+        .logout(logout -> logout.permitAll());
+
+    return http.build();
+}
+
 }
