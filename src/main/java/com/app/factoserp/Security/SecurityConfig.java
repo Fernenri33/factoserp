@@ -17,6 +17,8 @@ public class SecurityConfig {
                 .requestMatchers("/login").permitAll()
                 .requestMatchers("/ventas").permitAll()
                 .requestMatchers("/ventas/editar/*").permitAll()
+                .requestMatchers("/compras").permitAll()
+                .requestMatchers("compras/editar/*").permitAll()
                 .anyRequest().authenticated()
             );
         return http.build();

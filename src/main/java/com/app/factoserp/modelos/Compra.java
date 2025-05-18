@@ -47,7 +47,6 @@ public class Compra {
     public Compra() {
     }
 
-
     public Compra(int id, Usuarios comprador, LocalDate fechaCreacion, LocalDate fechaModificacion, LocalDate fechaEntrega, double total, List<CompraDetalle> compraDetalle) {
         this.id = id;
         this.comprador = comprador;
@@ -57,7 +56,6 @@ public class Compra {
         this.total = total;
         this.compraDetalle = compraDetalle;
     }
-
 
     public int getId() {
         return this.id;
@@ -114,6 +112,4 @@ public class Compra {
     public void setCompraDetalle(List<CompraDetalle> compraDetalle) {
         this.compraDetalle = compraDetalle;
     }
-
-    
 }

@@ -29,7 +29,6 @@ public class VentaDetalle {
     @Column(name = "cantidad", nullable = false)
     private int cantidad; // Cantidad del producto en el envío
 
-
     public VentaDetalle() {
     }
 
@@ -38,7 +37,6 @@ public class VentaDetalle {
         this.producto = producto;
         this.cantidad = cantidad;
     }
-
 
     public int getId() {
         return this.id;
