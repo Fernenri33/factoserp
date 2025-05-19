@@ -15,6 +15,15 @@ public class VentaDetalleServicio {
     @Autowired
     private VentaDetalleRepo ventaDetalleRepo;
 
+    public void crearVentaDetalle(){
+        VentaDetalle ventaDetalle = new VentaDetalle();
+        ventaDetalleRepo.save(ventaDetalle);
+    }
+
+        public void crearVentaDetalle(VentaDetalle ventaDetalle) {
+        ventaDetalleRepo.save(ventaDetalle);
+    }
+
     public void guardarVentaDetalle(VentaDetalle ventaDetalle) {
         ventaDetalleRepo.save(ventaDetalle);
     }
@@ -35,9 +44,9 @@ public class VentaDetalleServicio {
         return ventaDetalleRepo.findByVenta(venta);
     }
 
-    // public List<VentaDetalle> listarVentaDetallesPorVenta() {
-    //     return ventaDetalleRepo.findAll();
-    // }
+    public Venta getVenta(VentaDetalle ventaDetalle) {
+        return ventaDetalle.getVenta();
+    }
 
     public void actualizarVentaDetalle(VentaDetalle ventaDetalle) {
         if (ventaDetalleRepo.existsById(ventaDetalle.getId())) {

@@ -19,4 +19,8 @@ public class UsuarioServicio {
         }
         return null;
     }
+
+    public Usuarios buscarEmail(String email) {
+        return usuarioRepositorio.findByEmail(email);
+    }
 }
