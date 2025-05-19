@@ -29,6 +29,20 @@ public class ProductoServicio {
         return productoRepo.findById(id).orElse(null);
     }
 
+    public void disminuirStock(int id, int cantidad) {
+        Producto producto = buscarProducto(id);
+        if (producto != null) {
+            producto.setCantidad((producto.getCantidad() - cantidad));
+            guardarProducto(producto);
+        }
+    }
+
+    public void aumentarStock(Producto producto, int cantidad) {
+        if (producto != null) {
+            producto.setCantidad((producto.getCantidad() + cantidad));
+            guardarProducto(producto);
+        }
+    }
     public List<Producto> listarProductos() {
         return productoRepo.findAll();
     }

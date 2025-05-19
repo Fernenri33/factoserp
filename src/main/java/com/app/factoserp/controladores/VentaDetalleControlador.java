@@ -68,6 +68,8 @@ public class VentaDetalleControlador {
         ventaServicios.actualizarVenta(venta);
         ventaDetalleServicio.guardarVentaDetalle(ventaDetalle);
 
+        productoServicio.disminuirStock(productoId, cantidad);
+
         return "redirect:/ventas/editar/" + ventaId;
     }
 
@@ -79,9 +81,12 @@ public class VentaDetalleControlador {
 
         if (ventaDetalle != null) {
             ventaDetalleServicio.eliminarVentaDetalle(id);
+            Producto producto = ventaDetalle.getProducto();
 
             venta.setFechaModificacion(java.time.LocalDate.now());
             venta.setTotal(venta.getTotal() - (ventaDetalle.getProducto().getPrecioUnitario() * ventaDetalle.getCantidad()));
+
+            productoServicio.aumentarStock(producto, ventaDetalle.getCantidad());
             ventaServicios.actualizarVenta(venta);
         }
         return "redirect:/ventas/editar/" + venta.getId();
