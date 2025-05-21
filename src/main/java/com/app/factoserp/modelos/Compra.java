@@ -43,6 +43,9 @@ public class Compra {
     @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL)
     private List<CompraDetalle> compraDetalle = new ArrayList<>();
 
+    @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL)
+    private List<HistorialCompra> historialCompra = new ArrayList<>();
+
 
     public Compra() {
     }

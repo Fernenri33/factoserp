@@ -43,6 +43,10 @@ public class Venta {
     @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL)
     private List<VentaDetalle> ventaDetalle = new ArrayList<>();
 
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL)
+    private List<HistorialVenta> historialVenta = new ArrayList<>();
+
+
     public Venta() {
     }
 
