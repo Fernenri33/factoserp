@@ -17,7 +17,6 @@ public class Usuarios {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
 
     @Column(name = "nombre")
@@ -29,7 +28,7 @@ public class Usuarios {
     @Column(name = "telefono", length = 20)
     private String telefono;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
 
     @Column(name = "direccion")
@@ -42,11 +41,10 @@ public class Usuarios {
     @Column(name = "rol", nullable = false)
     private Rol rol;
 
-    public Usuarios() {
-    }
+    public Usuarios() {}
 
     public Usuarios(int id, String nombre, String apellido, String telefono, String email, String direccion,
-            String password, Rol estado) {
+                    String password, Rol rol) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -54,11 +52,13 @@ public class Usuarios {
         this.email = email;
         this.direccion = direccion;
         this.password = password;
-        this.rol = estado;
+        this.rol = rol;
     }
 
+    // Getters y Setters
+
     public int getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(int id) {
@@ -66,7 +66,7 @@ public class Usuarios {
     }
 
     public String getNombre() {
-        return this.nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
@@ -74,7 +74,7 @@ public class Usuarios {
     }
 
     public String getApellido() {
-        return this.apellido;
+        return apellido;
     }
 
     public void setApellido(String apellido) {
@@ -82,7 +82,7 @@ public class Usuarios {
     }
 
     public String getTelefono() {
-        return this.telefono;
+        return telefono;
     }
 
     public void setTelefono(String telefono) {
@@ -90,7 +90,7 @@ public class Usuarios {
     }
 
     public String getEmail() {
-        return this.email;
+        return email;
     }
 
     public void setEmail(String email) {
@@ -98,7 +98,7 @@ public class Usuarios {
     }
 
     public String getDireccion() {
-        return this.direccion;
+        return direccion;
     }
 
     public void setDireccion(String direccion) {
@@ -106,7 +106,7 @@ public class Usuarios {
     }
 
     public String getPassword() {
-        return this.password;
+        return password;
     }
 
     public void setPassword(String password) {
@@ -114,11 +114,11 @@ public class Usuarios {
     }
 
     public Rol getRol() {
-        return this.rol;
+        return rol;
     }
 
-    public void setEstado(Rol rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
-
 }
+
