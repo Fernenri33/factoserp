@@ -86,7 +86,7 @@ public class VentaDetalleControlador {
             venta.setFechaModificacion(java.time.LocalDate.now());
             venta.setTotal(venta.getTotal() - (ventaDetalle.getProducto().getPrecioUnitario() * ventaDetalle.getCantidad()));
 
-            productoServicio.aumentarStock(producto, ventaDetalle.getCantidad());
+            productoServicio.aumentarStock(id, ventaDetalle.getCantidad());
             ventaServicios.actualizarVenta(venta);
         }
         return "redirect:/ventas/editar/" + venta.getId();

@@ -49,29 +49,32 @@ public class CompraDetalleControlador {
     }
 
     @PostMapping("/detalle/agregar")
-    public String guardarCompraDetalle(
-            @RequestParam("compraId") int compraId,
-            @RequestParam("productoId") int productoId,
-            @RequestParam("cantidad") int cantidad) {
+public String guardarCompraDetalle(
+        @RequestParam("compraId") int compraId,
+        @RequestParam("productoId") int productoId,
+        @RequestParam("cantidad") int cantidad) {
 
-        CompraDetalle compraDetalle = new CompraDetalle();
-        Producto producto = productoServicio.buscarProducto(productoId);
-        Compra compra = compraServicio.buscarCompra(compraId);
+    CompraDetalle compraDetalle = new CompraDetalle();
+    Producto producto = productoServicio.buscarProducto(productoId);
+    Compra compra = compraServicio.buscarCompra(compraId);
 
-        compraDetalle.setCompra(compra);
-        compraDetalle.setProducto(producto);
-        compraDetalle.setCantidad(cantidad);
+    compraDetalle.setCompra(compra);
+    compraDetalle.setProducto(producto);
+    compraDetalle.setCantidad(cantidad);
 
-        double precioTotal = producto.getPrecioUnitario() * cantidad;
-        compra.setTotal(compra.getTotal() + precioTotal);
+    // Calcular el precio total
+    double precioTotal = producto.getPrecioUnitario() * cantidad;
+    compra.setTotal(compra.getTotal() + precioTotal);
 
-        compraServicio.actualizarCompra(compra);
-        compraDetalleServicio.guardarCompraDetalle(compraDetalle);
+    compraServicio.actualizarCompra(compra);
+    compraDetalleServicio.guardarCompraDetalle(compraDetalle);
 
-        productoServicio.aumentarStock(producto, cantidad); // al comprar, se aumenta el stock
+    // En una compra normalmente se aumenta el stock
+    productoServicio.aumentarStock(productoId, cantidad);
 
-        return "redirect:/compras/editar/" + compraId;
-    }
+    return "redirect:/compras/editar/" + compraId;
+}
+
 
     @GetMapping("/detalle/eliminar/{id}")
     public String eliminarCompraDetalle(@PathVariable("id") int id) {
@@ -97,4 +100,35 @@ public class CompraDetalleControlador {
         compraServicio.borrarCompra(id);
         return "redirect:/compras";
     }
+
+@PostMapping("/guardar-edicion")
+public String guardarEdicionCompra(
+        @RequestParam("compraId") int compraId,
+        @RequestParam("detalleIds") List<Integer> detalleIds,
+        @RequestParam("cantidades") List<Integer> cantidades) {
+
+    for (int i = 0; i < detalleIds.size(); i++) {
+        int id = detalleIds.get(i);
+        int nuevaCantidad = cantidades.get(i);
+
+        CompraDetalle detalle = compraDetalleServicio.buscarCompraDetalle(id);
+        if (detalle != null) {
+            int cantidadAnterior = detalle.getCantidad();
+            int diferencia = nuevaCantidad - cantidadAnterior;
+
+            detalle.setCantidad(nuevaCantidad);
+            compraDetalleServicio.guardarCompraDetalle(detalle);
+
+            Producto producto = detalle.getProducto();
+            if (diferencia > 0) {
+                productoServicio.aumentarStock(producto.getId(), diferencia);
+            } else if (diferencia < 0) {
+                productoServicio.disminuirStock(producto.getId(), -diferencia);
+            }
+        }
+    }
+
+    return "redirect:/compras";
+}
+
 }
