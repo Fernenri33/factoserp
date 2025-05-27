@@ -19,7 +19,8 @@ import com.app.factoserp.servicios.ProductoServicio;
 import com.app.factoserp.servicios.VentaDetalleServicio;
 import com.app.factoserp.servicios.VentaServicios;
 
-@PreAuthorize("hasRole('VENDEDOR')")
+
+@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_VENDEDOR')")
 @Controller
 @RequestMapping("/ventas")
 public class VentaDetalleControlador {

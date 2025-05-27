@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Page;
 
 import org.springframework.security.access.prepost.PreAuthorize;
-@PreAuthorize("hasRole('COMPRADOR')")
+@PreAuthorize("hasRole('ADMIN')")
 @Controller
 public class ProductoControlador {
 
