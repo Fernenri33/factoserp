@@ -3,6 +3,8 @@ package com.app.factoserp.servicios;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.app.factoserp.modelos.Producto;
@@ -17,9 +19,27 @@ public class ProductoServicio {
     public ProductoServicio() {
     }
 
+    //Implementar 
+
     public void guardarProducto(Producto producto) {
         productoRepo.save(producto);
     }
+
+    // editar producto
+    public void editarProducto(Producto producto) {
+        productoRepo.save(producto);
+    }
+
+    public List<Producto> listarProductos() {
+        return productoRepo.findAll();
+    }
+
+    public Page<Producto> listarProductos(Pageable pageable) {
+        return productoRepo.findAll(pageable);
+    }
+
+
+    // Hasta
 
     public void borrarProducto(int id) {
         productoRepo.deleteById(id);
@@ -44,9 +64,5 @@ public class ProductoServicio {
         guardarProducto(producto);
     }
 }
-
-    public List<Producto> listarProductos() {
-        return productoRepo.findAll();
-    }
     
 }
