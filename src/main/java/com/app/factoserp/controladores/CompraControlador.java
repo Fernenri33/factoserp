@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import com.app.factoserp.modelos.Compra;
 import com.app.factoserp.modelos.Usuarios;
 import com.app.factoserp.servicios.CompraServicio;
 import com.app.factoserp.servicios.UsuarioServicio;
+
 @Controller
 public class CompraControlador {
     

@@ -1,0 +1,93 @@
+/* Paleta general en grises para el sistema Factoserp */
+body {
+    background-color: #f8f9fa; /* gris claro */
+    color: #343a40; /* texto gris oscuro */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #dee2e6; /* gris medio */
+    border-bottom: 1px solid #ced4da;
+}
+
+.navbar-brand {
+    color: #212529 !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    color: #212529 !important;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #495057 !important;
+}
+
+/* Contenedor general */
+.container {
+    margin-top: 40px;
+}
+
+/* Encabezados */
+h1, h2, h3, h4, h5 {
+    color: #212529;
+}
+
+/* Botones grises personalizados */
+.btn-primary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-primary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+/* Tablas */
+.table {
+    background-color: #ffffff;
+}
+
+.table th, .table td {
+    border-color: #dee2e6;
+}
+
+/* Formularios */
+.form-control {
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    color: #343a40;
+}
+
+/* Footer opcional */
+footer {
+    background-color: #dee2e6;
+    padding: 1rem;
+    text-align: center;
+    color: #6c757d;
+    margin-top: 50px;
+}
+
+/* Estilo personalizado para el navbar */
+        .navbar {
+            background: linear-gradient(90deg, #5bc0f7 0%, #6a82fb 100%);
+        }
+        .navbar .navbar-brand {
+            color: #fff !important;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            margin: 0 8px;
+            border-radius: 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+            background: rgba(255,255,255,0.2);
+            color: #ffd700 !important;
+        }

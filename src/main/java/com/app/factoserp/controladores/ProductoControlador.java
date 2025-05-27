@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Page;
 
+import org.springframework.security.access.prepost.PreAuthorize;
+@PreAuthorize("hasRole('COMPRADOR')")
 @Controller
 public class ProductoControlador {
 

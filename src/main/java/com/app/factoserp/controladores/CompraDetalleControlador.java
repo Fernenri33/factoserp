@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ import com.app.factoserp.servicios.CompraDetalleServicio;
 import com.app.factoserp.servicios.CompraServicio;
 import com.app.factoserp.servicios.ProductoServicio;
 
+@PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_COMPRADOR')")
 @Controller
 @RequestMapping("/compras")
 public class CompraDetalleControlador {

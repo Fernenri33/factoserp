@@ -33,7 +33,7 @@ public class LoginControlador {
         Usuarios usuario = usuarioServicio.validarLogin(email, password);
         if (usuario != null) {
             session.setAttribute("usuario", usuario);
-            return "redirect:/"; // redirige a la página principal
+            return "redirect:/aindex"; // redirige a la página principal
         } else {
             model.addAttribute("error", "Credenciales inválidas");
             return "login";
